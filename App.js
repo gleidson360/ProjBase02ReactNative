@@ -21,14 +21,28 @@ export default function App() {
 
     <View>
       <Text 
-        style={{ color: VerificarLuz("#222", "#fff"),
-        fontSize: 32,
-        textAlign: "center" }}> Sensores do Smartphone! 
+        style={{ 
+          color: VerificarLuz("#222", "#fff"),
+          fontSize: 32,
+          textAlign: "center" }}> 
+        Sensores do Smartphone! 
       </Text>
 
-      <Text> { illuminance } </Text>  
+      <Text
+        style={{
+          color: VerificarLuz("#222", "#fff"),
+          fontSize: 16,
+          textAlign: "center" }}> 
+          { illuminance } 
+      </Text>  
 
-      <Image source={{ uri: "http://picsum.photos/200/200" }} style={{ height: 200 }} />
+      <Image 
+        source={{ uri: VerificarLuz(
+          "https://i.ibb.co/0GGQPcg/1.jpg",
+          "https://i.ibb.co/v4Y1fyG/2.jpg")
+        }} 
+        style={{ height: 200 }} />
+        
     </View>
 
   </ScrollView>;
