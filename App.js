@@ -7,15 +7,28 @@ export default function App() {
   const [{ illuminance }, definirIliminacao] = useState({ illuminance: 0 })
 
   useEffect(function() {
-    LightSensor.addListener(alterarIluminacao)
+    LightSensor.addListener(definirIliminacao)
   }, [])
 
-  return <ScrollView>
-    <StatusBar barStyle="dark-content" backgroundColor="#FFFBEB"/>
+  function VerificarLuz(escuro, claro) {
+    return illuminance > 20 ? escuro : claro
+  }
+  
+
+  return <ScrollView style={{ backgroundColor: VerificarLuz("#FFFBEB", "#20262E") }} >
+    <StatusBar barStyle={ VerificarLuz("dark-content", "light-content") }
+      backgroundColor={ VerificarLuz("#FFFBEB", "#20262E") } />
 
     <View>
-      <Text> Sensores do Smartphone! </Text>  
-      <Text> Testando a Iluminação do ambiente! </Text>  
+      <Text 
+        style={{ color: VerificarLuz("#222", "#fff"),
+        fontSize: 32,
+        textAlign: "center" }}> Sensores do Smartphone! 
+      </Text>
+
+      <Text> { illuminance } </Text>  
+
+      <Image source={{ uri: "http://picsum.photos/200/200" }} style={{ height: 200 }} />
     </View>
 
   </ScrollView>;
