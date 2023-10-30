@@ -1,7 +1,15 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { ScrollView, StatusBar, View, Text, Image, StyleSheet } from "react-native"
+import { LightSensor } from 'expo-sensors';
 
 export default function App() {
+
+  const [{ illuminance }, definirIliminacao] = useState({ illuminance: 0 })
+
+  useEffect(function() {
+    LightSensor.addListener(alterarIluminacao)
+  }, [])
+
   return <ScrollView>
     <StatusBar barStyle="dark-content" backgroundColor="#FFFBEB"/>
 
@@ -9,7 +17,7 @@ export default function App() {
       <Text> Sensores do Smartphone! </Text>  
       <Text> Testando a Iluminação do ambiente! </Text>  
     </View>
-    
+
   </ScrollView>;
 }
 
